@@ -1,5 +1,13 @@
-type PackageJsonInfo = {
-  packageJson: object;
+export type PackageJsonInfo = {
+  packageJson: {
+    scriptions: {
+      [key: string]: string;
+    };
+    scripts: {
+      [key: string]: string;
+    };
+    [key: string]: any;
+  };
   fullPathToPackageJson: string;
 };
 const PACKAGE_JSON = "package.json";
