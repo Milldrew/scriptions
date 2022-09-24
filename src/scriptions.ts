@@ -12,15 +12,13 @@ const { fullPathToPackageJson, packageJson } = resolvePackageJson();
 const chooseScriptMessage = `Choose a script from the package.json file located
 ${fullPathToPackageJson}`;
 const answers = createAnswers(packageJson);
-const WHICH_SCRIPT_DO_YOU_WANT_TO_RUN = {
+const whichScript = {
   type: QUESTION_TYPE,
   name: ANSWER_KEY,
   message: chooseScriptMessage,
   choices: answers,
 };
-const QUESTION_COLLECTION: QuestionCollection = [
-  WHICH_SCRIPT_DO_YOU_WANT_TO_RUN,
-];
+const QUESTION_COLLECTION: QuestionCollection = [whichScript];
 
 (async () => {
   const { chosenScript } = await inquirer.prompt(QUESTION_COLLECTION);
