@@ -10,13 +10,14 @@ createAnswers(packageJson);
 const QUESTION_1 = {
   type: "list",
   name: "name",
-  message: "MESSAGE",
+  message: MESSAGE,
   choices: [`answer1`],
 };
 const QUESTION_COLLECTION: QuestionCollection = [QUESTION_1];
 
 (async () => {
-  const answers = await inquirer.prompt(QUESTION_COLLECTION);
+  const payLoad = await inquirer.prompt(QUESTION_COLLECTION);
+  console.log({ answers: payLoad });
 })();
 function createAnswers(packageJson: PackageJsonInfo["packageJson"]) {
   if (packageJson.hasProperty(SCRIPTS) && packageJson.hasProperty(SCRIPTIONS)) {
