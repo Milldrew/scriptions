@@ -1,4 +1,4 @@
-import { spawnSync, execSync } from "child_process";
+import { execSync } from "child_process";
 const QUESTION_TYPE = "rawlist";
 const SCRIPTS = "scripts";
 const SCRIPTIONS = "scriptions";
