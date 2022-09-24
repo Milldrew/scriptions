@@ -1,3 +1,4 @@
+import { spawnSync, execSync } from "child_process";
 const QUESTION_TYPE = "rawlist";
 const SCRIPTS = "scripts";
 const SCRIPTIONS = "scriptions";
@@ -7,18 +8,17 @@ import inquirer from "inquirer";
 import { QuestionCollection } from "inquirer";
 const MESSAGE = `Choose a script from the package.json file located
   ${fullPathToPackageJson}`;
-createAnswers(packageJson);
+const ANSWERS = createAnswers(packageJson);
 const QUESTION_1 = {
   type: QUESTION_TYPE,
   name: "chosenScript",
   message: MESSAGE,
-  choices: [`answer1`, `answer1`, `answer1`, `answer1`],
+  choices: ANSWERS,
 };
 const QUESTION_COLLECTION: QuestionCollection = [QUESTION_1];
 
 (async () => {
-  const payLoad = await inquirer.prompt(QUESTION_COLLECTION);
-  console.log({ payLoad });
+  execSync(payLoad.chosenScript, { stdio: ["inherit", "inherit", "inherit"] });
 })();
 function createAnswers(packageJson: PackageJsonInfo["packageJson"]) {
   if (
