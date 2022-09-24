@@ -1,12 +1,14 @@
-import { execSync } from "child_process";
 const ANSWER_KEY = "chosenScript";
 const QUESTION_TYPE = "rawlist";
-const SCRIPTS = "scripts";
 const SCRIPTIONS = "scriptions";
-import { PackageJsonInfo, resolvePackageJson } from "./resolve-package-json.js";
-const { fullPathToPackageJson, packageJson } = resolvePackageJson();
+const SCRIPTS = "scripts";
+
 import inquirer from "inquirer";
+import { PackageJsonInfo, resolvePackageJson } from "./resolve-package-json.js";
 import { QuestionCollection } from "inquirer";
+import { execSync } from "child_process";
+
+const { fullPathToPackageJson, packageJson } = resolvePackageJson();
 const MESSAGE = `Choose a script from the package.json file located
   ${fullPathToPackageJson}`;
 const answers = createAnswers(packageJson);
