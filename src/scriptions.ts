@@ -1,3 +1,4 @@
+const QUESTION_TYPE = "rawlist";
 const SCRIPTS = "scripts";
 const SCRIPTIONS = "scriptions";
 import { PackageJsonInfo, resolvePackageJson } from "./resolve-package-json.js";
@@ -8,10 +9,10 @@ const MESSAGE = `Choose a script from the package.json file located
   ${fullPathToPackageJson}`;
 createAnswers(packageJson);
 const QUESTION_1 = {
-  type: "list",
+  type: QUESTION_TYPE,
   name: "chosenScript",
   message: MESSAGE,
-  choices: [`answer1`],
+  choices: [`answer1`, `answer1`, `answer1`, `answer1`],
 };
 const QUESTION_COLLECTION: QuestionCollection = [QUESTION_1];
 
@@ -31,4 +32,9 @@ function createAnswers(packageJson: PackageJsonInfo["packageJson"]) {
       "package.json is missing the key value scripts or scriptions"
     );
   }
+  let answers = [];
+  for (let scriptKey in packageJson.scripts) {
+    answers.push(packageJson.scripts[scriptKey]);
+  }
+  return answers;
 }
