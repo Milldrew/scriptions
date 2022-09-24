@@ -1,11 +1,18 @@
 import inquirer from "inquirer";
 import { QuestionCollection } from "inquirer";
-const QUESTION_COLLECTION: QuestionCollection = [
-  "question 1",
-  "question 2",
-  "question 2",
-  "question 2",
-];
+const QUESTION_1 = {
+  type: "list",
+  name: "name",
+  message: "message",
+  choices: [
+    `1 
+    hello
+    line breaks`,
+    "2,",
+    "3",
+  ],
+};
+const QUESTION_COLLECTION: QuestionCollection = [QUESTION_1];
 
 (async () => {
   console.log("hello iif");
