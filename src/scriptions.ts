@@ -38,9 +38,9 @@ function createAnswers(packageJson: PackageJsonInfo["packageJson"]) {
   for (let scriptKey in packageJson.scripts) {
     const scriptDescription = packageJson.scriptions[scriptKey];
     const scriptCommand = packageJson.scripts[scriptKey];
-    const scriptInfo = `     Script: ${scriptCommand}
-     Description: ${scriptDescription}
-            Name: ${scriptKey}`;
+    const scriptInfo = `   Script: ${scriptCommand}
+     Scription: ${scriptDescription}
+          Name: ${scriptKey}`;
     answers.push(scriptInfo);
   }
 
