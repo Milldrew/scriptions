@@ -2,5 +2,6 @@
   "name": "scriptions",
   "version": "1.0.0",
   "main": "scriptions.js",
+  "type": "module",
   "license": "MIT"
 }
