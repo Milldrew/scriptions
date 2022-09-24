@@ -18,10 +18,10 @@ const whichScript = {
   message: chooseScriptMessage,
   choices: answers,
 };
-const QUESTION_COLLECTION: QuestionCollection = [whichScript];
+const questionCollection: QuestionCollection = [whichScript];
 
 (async () => {
-  const { chosenScript } = await inquirer.prompt(QUESTION_COLLECTION);
+  const { chosenScript } = await inquirer.prompt(questionCollection);
   execSync(chosenScript, { stdio: ["inherit", "inherit", "inherit"] });
 })();
 function createAnswers(packageJson: PackageJsonInfo["packageJson"]) {
