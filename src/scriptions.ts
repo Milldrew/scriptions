@@ -9,13 +9,13 @@ import { QuestionCollection } from "inquirer";
 import { execSync } from "child_process";
 
 const { fullPathToPackageJson, packageJson } = resolvePackageJson();
-const MESSAGE = `Choose a script from the package.json file located
+const CHOOSE_SCRIPT_MESSAGE = `Choose a script from the package.json file located
   ${fullPathToPackageJson}`;
 const answers = createAnswers(packageJson);
 const WHICH_SCRIPT_DO_YOU_WANT_TO_RUN = {
   type: QUESTION_TYPE,
   name: ANSWER_KEY,
-  message: MESSAGE,
+  message: CHOOSE_SCRIPT_MESSAGE,
   choices: answers,
 };
 const QUESTION_COLLECTION: QuestionCollection = [
