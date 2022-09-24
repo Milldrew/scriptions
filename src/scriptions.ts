@@ -18,7 +18,8 @@ const QUESTION_1 = {
 const QUESTION_COLLECTION: QuestionCollection = [QUESTION_1];
 
 (async () => {
-  execSync(payLoad.chosenScript, { stdio: ["inherit", "inherit", "inherit"] });
+  const { chosenScript } = await inquirer.prompt(QUESTION_COLLECTION);
+  execSync(chosenScript, { stdio: ["inherit", "inherit", "inherit"] });
 })();
 function createAnswers(packageJson: PackageJsonInfo["packageJson"]) {
   if (
