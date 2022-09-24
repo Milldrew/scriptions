@@ -3,8 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  "scripts": {"foo", "echo hello world" },
+  "scripts": {
+    "foo": "echo hello world"
+  },
   "scriptions": {
     "foo": "this is an example description"
+  },
+  "devDependencies": {
+    "typescript": "^4.8.3"
   }
 }
