@@ -1,4 +1,5 @@
 import { execSync } from "child_process";
+const ANSWER_KEY = "chosenScript";
 const QUESTION_TYPE = "rawlist";
 const SCRIPTS = "scripts";
 const SCRIPTIONS = "scriptions";
@@ -11,7 +12,7 @@ const MESSAGE = `Choose a script from the package.json file located
 const ANSWERS = createAnswers(packageJson);
 const QUESTION_1 = {
   type: QUESTION_TYPE,
-  name: "chosenScript",
+  name: ANSWER_KEY,
   message: MESSAGE,
   choices: ANSWERS,
 };
