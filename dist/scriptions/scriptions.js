@@ -13,10 +13,9 @@ const SCRIPTIONS = "scriptions";
 const SCRIPTS = "scripts";
 import inquirer from "inquirer";
 import { resolvePackageJson } from "./resolve-package-json.js";
-import { execSync } from "child_process";
 const { fullPathToPackageJson, packageJson } = resolvePackageJson();
-const chooseScriptMessage = `Choose a script from the package.json file located
-${fullPathToPackageJson}`;
+const chooseScriptMessage = `FILE: ${fullPathToPackageJson}: 
+ Choose the script you want to execute:`;
 const answers = createAnswers(packageJson);
 const whichScript = {
     type: QUESTION_TYPE,
@@ -27,20 +26,22 @@ const whichScript = {
 const questionCollection = [whichScript];
 (() => __awaiter(void 0, void 0, void 0, function* () {
     const { chosenScript } = yield inquirer.prompt(questionCollection);
-    execSync(chosenScript, { stdio: ["inherit", "inherit", "inherit"] });
+    console.log(chosenScript);
+    //execSync(chosenScript, { stdio: ["inherit", "inherit", "inherit"] });
 }))();
 function createAnswers(packageJson) {
-    if (packageJson.hasOwnProperty(SCRIPTS) &&
-        packageJson.hasOwnProperty(SCRIPTIONS)) {
-        console.log(packageJson.scripts);
-        console.log(packageJson.scriptions);
-    }
-    else {
+    if (!packageJson.hasOwnProperty(SCRIPTS) ||
+        !packageJson.hasOwnProperty(SCRIPTIONS)) {
         throw new Error("package.json is missing the key value scripts or scriptions");
     }
     let answers = [];
     for (let scriptKey in packageJson.scripts) {
-        answers.push(packageJson.scripts[scriptKey]);
+        const scriptDescription = packageJson.scriptions[scriptKey];
+        const scriptCommand = packageJson.scripts[scriptKey];
+        const scriptInfo = `     Script: ${scriptCommand}
+     Description: ${scriptDescription}
+            Name: ${scriptKey}`;
+        answers.push(scriptInfo);
     }
     return answers;
 }
