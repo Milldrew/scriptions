@@ -10,13 +10,15 @@ import { QuestionCollection } from "inquirer";
 const MESSAGE = `Choose a script from the package.json file located
   ${fullPathToPackageJson}`;
 const ANSWERS = createAnswers(packageJson);
-const QUESTION_1 = {
+const WHICH_SCRIPT_DO_YOU_WANT_TO_RUN = {
   type: QUESTION_TYPE,
   name: ANSWER_KEY,
   message: MESSAGE,
   choices: ANSWERS,
 };
-const QUESTION_COLLECTION: QuestionCollection = [QUESTION_1];
+const QUESTION_COLLECTION: QuestionCollection = [
+  WHICH_SCRIPT_DO_YOU_WANT_TO_RUN,
+];
 
 (async () => {
   const { chosenScript } = await inquirer.prompt(QUESTION_COLLECTION);
