@@ -1,3 +1,10 @@
+import { readFileSync } from "fs";
+import { join } from "path";
+import { resolvePackageJson } from "./resolve-package-json.js";
+console.log(resolvePackageJson());
+
+/*
+  *
 import inquirer from "inquirer";
 import { QuestionCollection } from "inquirer";
 const QUESTION_1 = {
@@ -18,3 +25,4 @@ const QUESTION_COLLECTION: QuestionCollection = [QUESTION_1];
   console.log("hello iif");
   const answers = await inquirer.prompt(QUESTION_COLLECTION);
 })();
+*/
