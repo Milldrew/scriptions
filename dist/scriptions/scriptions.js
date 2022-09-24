@@ -7,15 +7,41 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+const ANSWER_KEY = "chosenScript";
+const QUESTION_TYPE = "rawlist";
+const SCRIPTIONS = "scriptions";
+const SCRIPTS = "scripts";
 import inquirer from "inquirer";
-const QUESTION_COLLECTION = [
-    "question 1",
-    "question 2",
-    "question 2",
-    "question 2",
-];
+import { resolvePackageJson } from "./resolve-package-json.js";
+import { execSync } from "child_process";
+const { fullPathToPackageJson, packageJson } = resolvePackageJson();
+const chooseScriptMessage = `Choose a script from the package.json file located
+${fullPathToPackageJson}`;
+const answers = createAnswers(packageJson);
+const whichScript = {
+    type: QUESTION_TYPE,
+    name: ANSWER_KEY,
+    message: chooseScriptMessage,
+    choices: answers,
+};
+const questionCollection = [whichScript];
 (() => __awaiter(void 0, void 0, void 0, function* () {
-    console.log("hello iif");
-    const answers = yield inquirer.prompt(QUESTION_COLLECTION);
+    const { chosenScript } = yield inquirer.prompt(questionCollection);
+    execSync(chosenScript, { stdio: ["inherit", "inherit", "inherit"] });
 }))();
+function createAnswers(packageJson) {
+    if (packageJson.hasOwnProperty(SCRIPTS) &&
+        packageJson.hasOwnProperty(SCRIPTIONS)) {
+        console.log(packageJson.scripts);
+        console.log(packageJson.scriptions);
+    }
+    else {
+        throw new Error("package.json is missing the key value scripts or scriptions");
+    }
+    let answers = [];
+    for (let scriptKey in packageJson.scripts) {
+        answers.push(packageJson.scripts[scriptKey]);
+    }
+    return answers;
+}
 //# sourceMappingURL=scriptions.js.map

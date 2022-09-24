@@ -4,10 +4,12 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "foo": "echo hello world"
+    "foo": "echo example script foo",
+    "bar": "echo example script bar"
   },
   "scriptions": {
-    "foo": "this is an example description"
+    "foo": "this is an example description for foo",
+    "bar": "this is an example description bar"
   },
   "devDependencies": {
     "nodemon": "^2.0.20",
