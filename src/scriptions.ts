@@ -9,12 +9,12 @@ import inquirer from "inquirer";
 import { QuestionCollection } from "inquirer";
 const MESSAGE = `Choose a script from the package.json file located
   ${fullPathToPackageJson}`;
-const ANSWERS = createAnswers(packageJson);
+const answers = createAnswers(packageJson);
 const WHICH_SCRIPT_DO_YOU_WANT_TO_RUN = {
   type: QUESTION_TYPE,
   name: ANSWER_KEY,
   message: MESSAGE,
-  choices: ANSWERS,
+  choices: answers,
 };
 const QUESTION_COLLECTION: QuestionCollection = [
   WHICH_SCRIPT_DO_YOU_WANT_TO_RUN,
