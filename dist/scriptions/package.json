@@ -1,7 +1,7 @@
 {
-  "name": "scriptions",
-  "version": "1.0.0",
-  "main": "scriptions.js",
+  "name": "@andrew_miller/scriptions",
+  "version": "1.0.4",
+  "bin": "scriptions.js",
   "type": "module",
   "license": "MIT"
 }
